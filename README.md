@@ -19,6 +19,8 @@ This is a repository for an Amazon clone built using React in the frontend and H
 * Install dependencies with `npm install`
 * Start Hardhat with `npx hardhat node`
 * Start the development server with `npm start`
+* Add hardhat url **http://127.0.0.1:8545/** to MetaMask network or any other web3 wallet. Chain ID - **31337**. Currency symbol - **ETH**
+* Import new account from Hardhat *any from step 2*.Reset it.
 
 ## License
 This project is licensed under the MIT License.

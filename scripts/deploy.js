@@ -9,13 +9,27 @@ const tokens = (n) => {
 async function main() {
     const [deployer] = await ethers.getSigners()
 
-    const Cryptazone = await hre.ethers.getContractFactory("Cryptazone")
-    const cryptazone = await Cryptazone.deploy()
-    await cryptazone.deployed()
+    const Cryptazon = await hre.ethers.getContractFactory("Cryptazon")
+    const cryptazon = await Cryptazon.deploy()
+    await cryptazon.deployed()
 
-    console.log(`Deployed Cryptazone Contract at ${cryptazone.address}`)
+    console.log(`Deployed Cryptazon Contract at ${cryptazon.address}`)
 
-    
+    for(let i = 0; i < items.length; i++) {
+        const transaction = await cryptazon.connect(deployer).list(
+            items[i].id,
+            items[i].name,
+            items[i].category,
+            items[i].image,
+            tokens(items[i].price),
+            items[i].rating,
+            items[i].stock,
+        )
+        await transaction.wait()
+        
+        console.log(`Listed item ${items[i].id}: ${items[i].name}`)
+    }
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
